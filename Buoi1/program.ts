@@ -1,7 +1,7 @@
 import { Department, department1, printDepartment } from "./department"
 import Account, { showAccountInfo } from "./account"
 import { login, login2, getPosts, combinePromises, createUserGroup, getUserInfo } from "./demo.promise"
-import { demoAsync, getPostAsync, createAndAddUserToGroup } from "./demo.async"
+import { demoAsync, getPostAsync, createAndAddUserToGroup, testAsyncLoop } from "./demo.async"
 
 // var department2 = new Department(2, 'Sale')
 
@@ -27,7 +27,7 @@ function welcomeUser(username: string) {
 
 //console.log(getUserInfo())
 
-getUserInfo().then(data => console.log(data))
+//getUserInfo().then(data => console.log(data))
 
 //combinePromises()
 
@@ -38,3 +38,5 @@ getUserInfo().then(data => console.log(data))
 //demoAsync()
 
 //createAndAddUserToGroup()
+
+testAsyncLoop()

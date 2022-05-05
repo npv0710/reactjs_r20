@@ -60,8 +60,31 @@ async function createAndAddUserToGroup() {
     console.log(resultAddUserToGroup)
 }
 
+const sleep = ms => {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+function printCounter(i : number) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('current value: ' + i)
+            resolve(i)
+        }, (5 - i) * 1000)
+    })
+
+    //return sleep(1000 * (5-i)).then(v => console.log('current value: ' + i))
+}
+
+async function testAsyncLoop() {
+    for (let i :number = 1; i < 4; i ++) {
+        console.log('i: ' + i)
+        await printCounter(i)
+    }
+}
+
 export {
     demoAsync,
     getPostAsync,
-    createAndAddUserToGroup
+    createAndAddUserToGroup,
+    testAsyncLoop
 }

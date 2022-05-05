@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.createAndAddUserToGroup = exports.getPostAsync = exports.demoAsync = void 0;
+exports.testAsyncLoop = exports.createAndAddUserToGroup = exports.getPostAsync = exports.demoAsync = void 0;
 //import { Request, Response, NextFunction, response } from 'express'
 var axios_1 = require("axios");
 // interface User {
@@ -123,3 +123,39 @@ function createAndAddUserToGroup() {
     });
 }
 exports.createAndAddUserToGroup = createAndAddUserToGroup;
+var sleep = function (ms) {
+    return new Promise(function (resolve) { return setTimeout(resolve, ms); });
+};
+function printCounter(i) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            console.log('current value: ' + i);
+            resolve(i);
+        }, (5 - i) * 1000);
+    });
+    //return sleep(1000 * (5-i)).then(v => console.log('current value: ' + i))
+}
+function testAsyncLoop() {
+    return __awaiter(this, void 0, void 0, function () {
+        var i;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    i = 1;
+                    _a.label = 1;
+                case 1:
+                    if (!(i < 4)) return [3 /*break*/, 4];
+                    console.log('i: ' + i);
+                    return [4 /*yield*/, printCounter(i)];
+                case 2:
+                    _a.sent();
+                    _a.label = 3;
+                case 3:
+                    i++;
+                    return [3 /*break*/, 1];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.testAsyncLoop = testAsyncLoop;

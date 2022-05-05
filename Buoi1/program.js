@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var demo_promise_1 = require("./demo.promise");
+var demo_async_1 = require("./demo.async");
 // var department2 = new Department(2, 'Sale')
 // printDepartment(department1)
 // printDepartment(department2)
@@ -14,9 +14,10 @@ function welcomeUser(username) {
 //login2('Nguyen Van A', '123abc', welcomeUser)
 //getPosts()
 //console.log(getUserInfo())
-(0, demo_promise_1.getUserInfo)().then(function (data) { return console.log(data); });
+//getUserInfo().then(data => console.log(data))
 //combinePromises()
 //createUserGroup()
 //getPostAsync()
 //demoAsync()
 //createAndAddUserToGroup()
+(0, demo_async_1.testAsyncLoop)();
