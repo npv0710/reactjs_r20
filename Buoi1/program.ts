@@ -29,7 +29,7 @@ function welcomeUser(username: string) {
 
 //getUserInfo().then(data => console.log(data))
 
-//combinePromises()
+combinePromises()
 
 //createUserGroup()
 
@@ -39,4 +39,4 @@ function welcomeUser(username: string) {
 
 //createAndAddUserToGroup()
 
-testAsyncLoop()
+//testAsyncLoop()

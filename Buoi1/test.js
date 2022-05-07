@@ -1,6 +1,28 @@
 var username = 'Tran Van B'
 console.log(username)
 
+var ob = {
+    name: 'Nguyen Hai Dang',
+    showName: function() {
+        //let self = this
+        function print() {
+            console.log('name: ' + this.name)
+        }
+        //print.bind(this)()
+        //print.call(this)
+        //print.apply(this)
+    },
+
+    showName2: function() {
+        let print = () => {
+            console.log('name: ' + this.name)
+        }
+        print()
+    }
+}
+
+ob.showName2()
+
 var user = {
     username: 'Nguyen Van A',
     showInfo: function() {
@@ -92,3 +114,47 @@ console.log(employee.avg)
 console.log(student.avg())
 
 //console.log(student.avg.apply(employee, employee.scores))
+
+//Call function
+
+function initUser(name, age) {
+    this.name = name
+    this.age = age
+    return {
+        name: this.name,
+        age: this.age
+    }
+}
+
+function createUser1(name, age) {
+    initUser.call(this, name, age)
+    this.role = 'admin'
+}
+
+var user1 = new createUser1('Nguyen Van A', 25)
+
+;(function(name) {
+    console.log('Hello: ' + name)
+}).call(this, 'Nguyen Tien Linh')
+
+function showUserInfo(position) {
+    let info = 'Ten: '  + this.name + '; Tuoi: ' + this.age + '; Vi tri: ' + position
+    console.log(info)
+}
+
+var user2 = {
+    name: 'Nguyen Cong Phuong',
+    age: 27
+}
+showUserInfo.call(user1)
+
+showUserInfo.call(user2, 'Dev')
+
+function updateUserPosition(position) {
+    this.position = position
+    return this
+}
+
+var user2Update = updateUserPosition.call(user2, 'Director')
+
+console.log(user2Update)

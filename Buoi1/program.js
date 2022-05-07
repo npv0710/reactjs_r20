@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var demo_async_1 = require("./demo.async");
+var demo_promise_1 = require("./demo.promise");
 // var department2 = new Department(2, 'Sale')
 // printDepartment(department1)
 // printDepartment(department2)
@@ -15,9 +15,9 @@ function welcomeUser(username) {
 //getPosts()
 //console.log(getUserInfo())
 //getUserInfo().then(data => console.log(data))
-//combinePromises()
+(0, demo_promise_1.combinePromises)();
 //createUserGroup()
 //getPostAsync()
 //demoAsync()
 //createAndAddUserToGroup()
-(0, demo_async_1.testAsyncLoop)();
+//testAsyncLoop()
