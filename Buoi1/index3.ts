@@ -1,4 +1,4 @@
-export {}
+//export {}
 var title: string = "Reactjs buoi1";
 console.log(title);
 console.log('123abc');
@@ -45,29 +45,29 @@ var fullName2 = getFullName4('Tran')
 console.log(fullName)
 console.log(fullName2)
 
-class Animal {
-    name: string
-    constructor(name: string) {
-        this.name = name
-    }
+// class Animal {
+//     name: string
+//     constructor(name: string) {
+//         this.name = name
+//     }
 
-    move(meters: number = 0): string {
-        return this.name + ' moved ' + meters + 'm'
-    }
-}
+//     move(meters: number = 0): string {
+//         return this.name + ' moved ' + meters + 'm'
+//     }
+// }
 
-class Cat extends Animal {
-    constructor(name: string) {
-        super(name)
-    }
-    move(meters = 5): string {
-        return super.move(meters)
-    }
-}
+// class Cat extends Animal {
+//     constructor(name: string) {
+//         super(name)
+//     }
+//     move(meters = 5): string {
+//         return super.move(meters)
+//     }
+// }
 
-var cat = new Cat('Tom')
-console.log(cat.move())
-console.log(cat.move(15))
+// var cat = new Cat('Tom')
+// console.log(cat.move())
+// console.log(cat.move(15))
 
 
 
