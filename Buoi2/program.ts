@@ -4,7 +4,13 @@ import Account, { showAccountInfo } from "./account";
 
 import { login } from "./callback";
 
-import { combinePromise, getPost, getUserInfo } from "./promise";
+import { 
+    combinePromise, 
+    getPost, 
+    getUserInfo,
+    testPromiseAllSettled,
+    testPromiseAll
+} from "./promise";
 
 var ac = new Account(1, 'Nguyen Hai Dang')
 
@@ -21,4 +27,8 @@ function welcome(username: string) {
 
 //getUserInfo().then(data => console.log(data))
 
-combinePromise()
+//combinePromise()
+
+//testPromiseAllSettled()
+
+testPromiseAll()

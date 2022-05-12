@@ -1,7 +1,7 @@
-import { resolve } from "path"
-import axios from 'axios'
+import axios from 'axios';
+import { XMLHttpRequest } from 'xmlhttprequest-ts';
 
-var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest
+//var XMLHttpRequest = require('xmlhttprequest');
 
 const getPost = () => {
     return new Promise((resolve, reject) => {
@@ -11,9 +11,9 @@ const getPost = () => {
 
         request.onload = () => {
             if (request.status == 200) {
-                //resolve(request.responseText)
+                resolve(request.responseText)
             }else {
-                //reject(Error(request.statusText))
+                reject(Error(request.statusText))
             }
         }
 
@@ -110,9 +110,64 @@ const getUserInfo = () => {
     })
 }
 
+function resolveTimeout(value, delay) {
+    return new Promise(resolve => setTimeout(() => resolve(value), delay))
+}
+
+function rejectTimeout(message, delay) {
+    return new Promise((resolve, reject) => setTimeout(() => reject(message), delay))
+}
+
+const demoPromiseAllSettled = () => Promise.allSettled([
+    rejectTimeout(['Bad request'], 2000),
+    resolveTimeout(['user', 'group'], 5000)
+])
+
+const demoPromiseAll = () => Promise.all([
+    resolveTimeout(['user', 'group'], 5000),
+    rejectTimeout(['Bad request'], 2000)
+])
+
+const testPromiseAllSettled = () => {
+    let i = 1
+    console.log('count variable: ' + i)
+
+    let interval = setInterval(() => {
+        if (i <= 5) {
+            i ++
+            console.log('count variable: ' + i)
+        }else {
+            clearInterval(interval)
+        }
+    }, 1000)
+
+    demoPromiseAllSettled().then(data => console.log(data))
+}
+
+const testPromiseAll = () => {
+    let i = 1
+    console.log('count variable: ' + i)
+
+    let interval = setInterval(() => {
+        if (i <= 5) {
+            i ++
+            console.log('count variable: ' + i)
+        }else {
+            clearInterval(interval)
+        }
+    }, 1000)
+
+    demoPromiseAll()
+    .then(data => console.log(data))
+    .catch(error => console.log(error))
+}
+
+
 export {
     getPost,
     getUserInfo,
-    combinePromise
+    combinePromise,
+    testPromiseAllSettled,
+    testPromiseAll
 }
 

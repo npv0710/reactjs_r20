@@ -11,4 +11,6 @@ function welcome(username) {
 //getPost()
 //console.log(getUserInfo())
 //getUserInfo().then(data => console.log(data))
-(0, promise_1.combinePromise)();
+//combinePromise()
+//testPromiseAllSettled()
+(0, promise_1.testPromiseAll)();
