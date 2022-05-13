@@ -15,7 +15,12 @@ class DemoClassComponent extends React.Component {
 
         this.myRef = React.createRef()
         this.myRef.current = this.state.count
+
+        console.log('initial props: ')
+      
     }
+
+   
     
     handleClick () {
         // console.log('clicked...')
@@ -28,7 +33,7 @@ class DemoClassComponent extends React.Component {
             count: this.state.count + 1
         }, function() {
             console.log('state has just changed...')
-            this.props.clickButton(this.state.count)
+            //this.props.clickButton(this.state.count)
         })
 
         //this.props.clickButton(this.state.count)
@@ -57,41 +62,42 @@ class DemoClassComponent extends React.Component {
 
     componentWillReceiveProps() {
         console.log('Component will receive props...')
-        console.log(this.props.user)
+        //console.log(this.props.user)
     }
 
     shouldComponentUpdate() {
-        if (this.props.user.password === '123abc')
-            return true
-        else return false
-        //return true
+        // if (this.props.user.password === '111111')
+        //     return true
+        // else return false
+        return true
     }
 
     componentWillUpdate() {
         console.log('Component will update before received props...')
-        console.log(this.props.user)
+        //console.log(this.props.user)
     }
 
     componentDidUpdate() {
         console.log('Component did update after received props...')
-        console.log(this.props.user)
+        //console.log(this.props.user)
     }
 
 
     render() {
         console.log('component demo render...')
+        //console.log(this.props)
         //console.log('count state: ' + this.state.count)
         return (
             <div className='demo demo2'>
-                <h1 style={{color: this.state.fontColor}}>Demo class component</h1>
+                {/* <h1 style={{color: this.state.fontColor}}>Demo class component</h1>
                 <h3 className={this.state.flagShowh3 ? 'h3': 'hide'}>Welcome: {this.props.username}</h3>
                 <button style={{cursor:'pointer'}} onClick={this.handleClick}>Click me</button>
                 <h3>count state: {this.state.count}</h3>
                 <h3>username: {this.props.user.username}</h3>
-                <h3>password: {this.props.user.password}</h3>
+                <h3>password: {this.props.user.password}</h3> */}
             </div>
         )
     }
 }
 
-export default DemoClassComponent
+export default React.memo(DemoClassComponent)
