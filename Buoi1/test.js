@@ -1,3 +1,5 @@
+"use strict";
+
 var username = 'Tran Van B'
 console.log(username)
 
@@ -62,7 +64,7 @@ function getInfo(callback) {
 //----------
 
 //gán function cho biến
-t = user.showInfoDetail.bind(user)
+var t = user.showInfoDetail.bind(user)
 t()
 //----------
 
@@ -77,7 +79,7 @@ var person = {
     },
     showFriendThis: function() {
       this.friends.forEach(function(fr){
-        console.log(this.firstName + ' have a friend named ' + fr);
+        //console.log(this.firstName + ' have a friend named ' + fr);
       });
     },
     showFriendFixed: function() {
@@ -158,3 +160,21 @@ function updateUserPosition(position) {
 var user2Update = updateUserPosition.call(user2, 'Director')
 
 console.log(user2Update)
+
+var question2 = function (str) {
+    switch (str) {
+        case 'c)':
+            //let b = a => a + 100;
+            return function (a, b, c) { return a + b + c + 1000; };
+        case 'a)':
+            return function (a) { return a + 1000; };
+        case 'b)':
+            //let b = a => a + 100;
+            return function (a, b) { return a + b + 1000; };
+    }
+};
+
+
+console.log(question2('a)')(20));
+console.log(question2('b)')(20, 30));
+

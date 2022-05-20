@@ -101,3 +101,5 @@ class DemoClassComponent extends React.Component {
 }
 
 export default React.memo(DemoClassComponent)
+
+//export default DemoClassComponent

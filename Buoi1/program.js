@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var demo_promise_1 = require("./demo.promise");
+var demo_async_1 = require("./demo.async");
 // var department2 = new Department(2, 'Sale')
 // printDepartment(department1)
 // printDepartment(department2)
@@ -15,9 +15,37 @@ function welcomeUser(username) {
 //getPosts()
 //console.log(getUserInfo())
 //getUserInfo().then(data => console.log(data))
-(0, demo_promise_1.combinePromises)();
+//combinePromises()
 //createUserGroup()
 //getPostAsync()
 //demoAsync()
-//createAndAddUserToGroup()
+(0, demo_async_1.createAndAddUserToGroup)();
 //testAsyncLoop()
+function question14(str, oldChart, newChart) {
+    var re = new RegExp("".concat(oldChart), 'g');
+    var newStr = str.replace(re, newChart);
+    console.log(newStr);
+}
+//question14('123abc', 'abc', '456');
+// let ex4 = new Excercise4();
+// console.log(ex4.question2('b)')(50, 25));
+// function testParams(a: number, b: number) {
+//     return a + b + 1000;
+// }
+// type fn01 = (name: string) => void
+// type fn02 = (age: string) => void
+// type fn03 = (description: number) => void
+// type Options = 'op1' | 'op2' | 'op3'
+// const test = (options) => {
+//     switch(options) {
+//           case 'op1':
+//             return 'fn01';
+//           case 'op2':
+//             return 'fn02';
+//           case 'op3':
+//             return 'fn03';
+//           default:
+//             return null;
+//         }
+//     }
+// console.log(test('op1'));

@@ -32,6 +32,8 @@ function callAPICreateUser() {
     console.log('Call API create user')
     return new Promise((resolve, reject) => setTimeout(() => {
         resolve('Create user successfully')
+
+        //reject('Error!')
     }, 1000))
 }
 
@@ -51,7 +53,12 @@ function callAPIAddUserToGroup() {
 
 async function createAndAddUserToGroup() {
     let resultCreateUser = await callAPICreateUser()
-    console.log(resultCreateUser)
+   
+    if (resultCreateUser !== 'Create group successfully') {
+        console.log('Loi roi');
+        console.log('Dong chuong trinh');
+        return;
+    }
 
     let resultCreateGroup = await callAPICreateGroup()
     console.log(resultCreateGroup)

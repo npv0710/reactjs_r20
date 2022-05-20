@@ -86,6 +86,7 @@ function callAPICreateUser() {
     console.log('Call API create user');
     return new Promise(function (resolve, reject) { return setTimeout(function () {
         resolve('Create user successfully');
+        //reject('Error!')
     }, 1000); });
 }
 function callAPICreateGroup() {
@@ -108,7 +109,11 @@ function createAndAddUserToGroup() {
                 case 0: return [4 /*yield*/, callAPICreateUser()];
                 case 1:
                     resultCreateUser = _a.sent();
-                    console.log(resultCreateUser);
+                    if (resultCreateUser !== 'Create group successfully') {
+                        console.log('Loi roi');
+                        console.log('Dong chuong trinh');
+                        return [2 /*return*/];
+                    }
                     return [4 /*yield*/, callAPICreateGroup()];
                 case 2:
                     resultCreateGroup = _a.sent();

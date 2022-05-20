@@ -13,7 +13,7 @@ import SingnUp from './pages/signup/SignUp';
 import SignIn from './pages/signin/SignIn';
 
 const changeNumberPlusFive = (num) => {
-    console.log('number: ' + num)
+    console.log('change number called: ' + num)
     return num + 5;
 }
 
@@ -27,7 +27,9 @@ function App() {
 
     const [number, setNumer] = useState(0)
 
-    let changeNumber = useMemo(() => changeNumberPlusFive(number), [])
+    //let changeNumber = useMemo(() => changeNumberPlusFive(number), [])
+
+    let changeNumber = changeNumberPlusFive(number)
 
     let [flag, setFlag] = useState(false)
 
@@ -45,10 +47,15 @@ function App() {
         setFlag(!flag)
     }
 
-    const handleClickButton = useCallback((count) => {
+    // const handleClickButton = useCallback((count) => {
+    //     console.log('data received from child component: ');
+    //     console.log(count);
+    // }, [number])
+
+    const handleClickButton = (count) => {
         console.log('data received from child component: ');
         console.log(count);
-    }, [])
+    }
 
     console.log('App componet render...');
 
