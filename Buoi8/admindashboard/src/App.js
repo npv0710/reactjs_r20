@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import HomeTest from './pages/home/HomeTest';
 
+import Home from './pages/home/Home';
+
 import Signin from './pages/signin/Signin';
 import Signup from './pages/signup/Signup';
 import ForgotPassword from './pages/forgotpassword/ForgotPassword';
@@ -57,7 +59,7 @@ function App() {
                     <Route path="/sign-in" component={SigninWithLoading}/>
                     <Route path="/sign-up" component={SignupWithLoading} />
                     <Route path="/forgot-password" component={ForgotPassword} />
-                    <Route exact path="/" component={HomeTest} />
+                    <Route path="/" component={Home} />
                 </Switch>
             </Router>
         </div>
