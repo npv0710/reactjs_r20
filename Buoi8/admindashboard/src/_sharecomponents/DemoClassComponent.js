@@ -1,4 +1,4 @@
-import react, { Component } from 'react'
+import React, { Component } from 'react'
 import './DemoClassComponent.css'
 
 class DemoClassComponent extends Component {
@@ -29,7 +29,7 @@ class DemoClassComponent extends Component {
         // })
 
         this.setState((a) => {
-            console.log(a);
+            //console.log(a);
             a.count = a.count + 1;
             return a;
         })
@@ -39,38 +39,38 @@ class DemoClassComponent extends Component {
 
     //WillMount
     componentWillMount() {
-        console.log('Component will mount... 1')
+        //console.log('Component will mount... 1')
     }
     //Render
 
     //DidMount
     componentDidMount() {
-        console.log('Component did mount... 3')
+        //console.log('Component did mount... 3')
     }
 
     //Updating:
     componentWillReceiveProps() {
-        console.log('Component will receive props...')
-        console.log(this.props.user)
+        // console.log('Component will receive props...')
+        // console.log(this.props.user)
     }
 
     shouldComponentUpdate() {
-        console.log('Component should update...')//return true or false
+        //console.log('Component should update...')//return true or false
         // if (this.props.user.password === '111111') return true
         // return false
         return true
     }
 
     componentWillUpdate() {
-        console.log('Component will update ')
+        //console.log('Component will update ')
     }
 
     componentDidUpdate() {
-        console.log('Component did update after received props...')
+        //console.log('Component did update after received props...')
     }
     //UnMount
     componentWillUnmount() {
-        console.log('Demo Component will unmount...')
+        //console.log('Demo Component will unmount...')
     }
 
 
@@ -79,14 +79,14 @@ class DemoClassComponent extends Component {
         console.log('DemoClassComponent rendered... 2')
 
         const {user} = this.props
-        console.log(user)
+        //console.log(user)
 
         return (
             <div className='demo demo2'>
                 <h1 style={{color: this.state.fontColor}}>Demo class component</h1>
                 <h3 className={this.state.flagShowh3 ? 'h3': 'hide'}>Welcome: {this.props.username}</h3>
-                <h2>{this.state.count}</h2>
-                <button onClick={this.handleClick}>Click me</button>
+                {/* <h2>{this.state.count}</h2> */}
+                {/* <button onClick={this.handleClick}>Click me</button> */}
                 <h1>User info:</h1>
                 <h3>username: {this.props.user.username}</h3>
                 <h3>password: {this.props.user.password}</h3>
@@ -101,4 +101,6 @@ class DemoClassComponent extends Component {
     }
 }
 
-export default DemoClassComponent
+export default React.memo(DemoClassComponent)
+
+//export default DemoClassComponent

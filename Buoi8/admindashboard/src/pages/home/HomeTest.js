@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import DemoClassComponent from "../../_sharecomponents/DemoClassComponent";
 import WithColor from "../../_sharecomponents/HOCComponent/WithColor";
 import OnMouseHover from "../../_sharecomponents/renderprops/OnMouseHover";
 import Counter from "../../_sharecomponents/renderprops/Counter";
+import { useMemo } from "react";
 
 const Title = (props) => {
     return (
@@ -26,11 +27,18 @@ const Article = (props) => {
 const TitleWithRandomColor = WithColor(Title);
 const ArticleWithRandomColor = WithColor(Article);
 
+const changeNumberPlusFive = (num) => {
+    console.log('change number called: ' + num)
+    return num + 5;
+}
+
 const HomeTest = (props) => {
     const [user, setUser] = useState({
         username: 'Nguyen Van A',
         password: '123abc'
     })
+
+    const [number, setNumber] = useState(0)
 
     const _onClick = () => {
         //setUser({...user, username: 'Tran Van B'})
@@ -39,28 +47,40 @@ const HomeTest = (props) => {
 
     const [flagShowDemoComponent, setFlagShowDemoComponent] = useState(true)
 
+    let changeNumber = useMemo(() => changeNumberPlusFive(number), [number])
+
+    const _changeNumber = useCallback((number) => {
+        number = number * 2;
+        console.log('function change number called...');
+        console.log('mumber after changed : ' + number);
+    }, [number])
 
     console.log('Home component rendered...')
     return (
         <div className="signup-container">
-            <h1>Header &nbsp;&#10100;&nbsp;height:&nbsp;110px;&nbsp;&#10101;</h1>
             {/* {   
                 flagShowDemoComponent &&
                 
             } */}
 
-            <DemoClassComponent user={user}/>
+            <h1> Current number: {changeNumber}</h1>
+            <h2>flag show demo component: {flagShowDemoComponent.toString()}</h2>
+            <DemoClassComponent 
+                user={user}
+                changeNumber={_changeNumber}
+            />
+
             <button
                 style={{cursor: 'pointer'}}
                 onClick={_onClick}
             >
-                Click me to change user
+                Click me to change state
             </button>
             <br></br>
             <br></br>
             <br></br>
             <hr></hr>
-            <TitleWithRandomColor subTitle="123abc"/>
+            {/* <TitleWithRandomColor subTitle="123abc"/>
             <ArticleWithRandomColor />
             <br></br>
             <br></br>
@@ -93,7 +113,7 @@ const HomeTest = (props) => {
                         </div>
                     )
                 }}
-            />
+            /> */}
         </div>
     )
 }

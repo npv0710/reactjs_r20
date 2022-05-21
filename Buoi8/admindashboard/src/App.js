@@ -59,7 +59,7 @@ function App() {
                     <Route path="/sign-in" component={SigninWithLoading}/>
                     <Route path="/sign-up" component={SignupWithLoading} />
                     <Route path="/forgot-password" component={ForgotPassword} />
-                    <Route path="/" component={Home} />
+                    <Route path="/" component={HomeTest} />
                 </Switch>
             </Router>
         </div>
