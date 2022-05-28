@@ -5,63 +5,32 @@ import CustomInput from './_sharecomponents/CustomInput';
 
 import FormGroup from './_sharecomponents/formgroup/FormGroup';
 
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import ProductList from './pages/ProductList';
+import Home from './pages/Home';
+
 function App() {
     
     const handleClickButton = (count) => {
         console.log('data received from child component: ')
         console.log(count)
     }
-    return ( <
-        div className = "App">
-            
-            <DemoClassComponent 
+    return ( 
+        <div className = "App">
+            {/* <DemoClassComponent 
                 username='Nguyen Van A'
-                age={25}
+                 age={25}
                 clickButton={handleClickButton}
-            />
-            
-            <FormGroup width='250px'>
-                <CustomInput
-                    label='Username *'
-                    type='text'
-                    name='username'
-                    value=''
-                />
-            </FormGroup>
-
-            <FormGroup width='250px'>
-                <CustomInput
-                    label='Password *'
-                    type='password'
-                    name='password'
-                    value=''
-                />
-            </FormGroup>
-
-             <FormGroup width='250px'>
-                <CustomInput
-                    label='Email *'
-                    type='email'
-                    name='email'
-                    value=''
-                />
-            </FormGroup>
-
-             <FormGroup width='250px'>
-                <CustomInput
-                    label='First Name *'
-                    type='text'
-                    name='firstName'
-                    value=''
-                />
-            </FormGroup>
-
-            {/* <CustomInput
-                label='Password'
-                type='password'
-                name='password'
-                value=''
             /> */}
+
+            <p>Demo router</p>
+            <Link to='/'>Home</Link>
+            <br></br>
+            <Link to='/productlist'>Product List</Link>
+            <Switch>
+                <Route path='/' component={Home} exact />
+                <Route path='/productlist' component={ProductList} />
+            </Switch>
         </div>
     );
 }

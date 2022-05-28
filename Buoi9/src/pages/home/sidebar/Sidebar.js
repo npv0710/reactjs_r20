@@ -3,12 +3,17 @@ import { MdControlCamera } from 'react-icons/md';
 import CustomLink from '../../../_sharecomponents/customlinks/CustomLink';
 import { menuLinks } from '../../../data/data';
 
+import { connect } from 'react-redux';
+
 const Sidebar = (props)=> {
+    console.log('side bar props: ')
+    console.log(props)
+
     return(
         <div 
             className={
                 props.sidebarIsOpen ? 
-                'sidebar open' : 'sidebar'
+                'sidebar' : 'sidebar close'
             }
         >   
             <div className='sidebar-header'>
@@ -30,4 +35,10 @@ const Sidebar = (props)=> {
     )
 }
 
-export default Sidebar;
+const mapStateToProps = (state) => {
+    return {
+        sidebarIsOpen: state.view.sidebarIsOpen
+    }
+}
+
+export default connect(mapStateToProps, null)(Sidebar);

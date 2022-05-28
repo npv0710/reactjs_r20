@@ -11,20 +11,23 @@ import WithLoading from '../../_sharecomponents/loading/WithLoading';
 
 import './HomePage.css';
 
+import { connect } from 'react-redux';
+
 const UserWithLoading = WithLoading(UserInfo)
 const ListGroupsWithLoading = WithLoading(ListGroups)
 const SettingsWithLoading = WithLoading(Settings)
 
+
 const HomePage = (props) => {
-    const [sideBarIsOpen, setSidebarIsOpen] = useState(true)
+    //const [sideBarIsOpen, setSidebarIsOpen] = useState(true)
     const handleClickMenuIcon = (sidebarIsOpen) => {
-        setSidebarIsOpen(sidebarIsOpen)
+        //setSidebarIsOpen(sidebarIsOpen)
     }
 
     return(
         <div className='home-container'>
-            <Sidebar sideBarIsOpen={sideBarIsOpen}/>
-            <div className={sideBarIsOpen ? 'home-main sidebar-open' : 'home-main'}>
+            <Sidebar />
+            <div className={props.sidebarIsOpen ? 'home-main' : 'home-main sidebar-close'}>
                 <Header clickMenuIcon={handleClickMenuIcon}/>
                 <div className='main-content'>
                     <Switch>
@@ -38,4 +41,11 @@ const HomePage = (props) => {
     )
 }
 
-export default HomePage;
+
+const mapStateToProps = (state) => {
+    return {
+        sidebarIsOpen: state.view.sidebarIsOpen
+    }
+}
+
+export default connect(mapStateToProps, null)(HomePage);
