@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react"
 
-//import store from "./store";
+import store from "./store";
 
 import * as actionTypes from './constants'
+
 //import { increment, decrement } from "./counterReducer";
 import counterSlide from "./counterSlide";
+
 import { increment, decrement } from './counterSlide';
+
 import { reducer } from './counterSlide'
+
 import { getListTodoAsyncAction , addTodo, updateTodo } from './todoSlide';
+
 
 import TodoList from './TodoList';
 
@@ -18,8 +23,17 @@ import { selectIsLoading, selectListTodos } from './todoSelector';
 import { connect } from 'react-redux';
 import { selectCounter } from "./countSelector";
 
+
 console.log('reducer from slide: ')
-console.log(getListTodoAsyncAction)
+console.log(counterSlide.reducer)
+
+
+console.log('sate from store: ')
+console.log(store.getState().count)
+
+console.log('reducer from store: ')
+console.log(store.reducer)
+
 
 const TodoListWithLoading = WithLoading(TodoList);
 
@@ -113,6 +127,17 @@ const DemoRedux = (props) => {
             name: 'C#'}
         )
     }
+
+    const getNumber = () => {
+        return 10;
+    }
+
+    let ob = {
+        x: getNumber
+    }
+
+    console.log('ob ject test: ')
+    console.log(ob.x)
 
     return(
         <div>
